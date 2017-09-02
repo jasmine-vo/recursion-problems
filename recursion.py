@@ -46,3 +46,65 @@ def flatten(lst):
         return flatten(lst[0]) + flatten(lst[1:])
 
     return lst[:1] + flatten(lst[1:])
+
+
+###############################################################################
+### Given a number pad and a string, print all possible letter combinations ###
+###############################################################################
+
+"""
+EX. number pad
+
+num_pad = {'1': ['a', 'b', 'c'],
+           '2': ['d', 'e', 'f'],
+           '3': ['g', 'h', 'i']
+           ....................
+           }
+continue & include 0-9
+
+EX. string
+
+str = '123'
+
+will print:
+adg
+adh
+adi
+aeg
+aeh
+aei
+afg
+afh
+afi
+bdg
+bdh
+bdi
+beg
+beh
+bei
+bfg
+bfh
+bfi
+cdg
+cdh
+cdi
+ceg
+ceh
+cei
+cfg
+cfh
+cfi
+"""
+
+def letter_combos(string, num_pad, idx=0, result=""):
+    """ Given a number string and number pad, prints all possible letter
+    combinations """
+
+    if idx >= len(string) and len(result) > 0:
+        print result
+        return
+
+    lst = num_pad.get(string[idx])
+
+    for l in lst:
+        letter_combos(string, num_pad, idx + 1, result + l)
