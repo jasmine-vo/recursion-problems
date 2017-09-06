@@ -1,3 +1,15 @@
+##################
+### Count list ###
+##################
+
+def count_list(lst):
+    """ Returns the number of items in a list using recursion """
+
+    if lst == []:
+        return 0
+
+    return 1 + count_list(lst[1:])
+
 
 #################################################
 ### Write a function to check if BST is valid ###
