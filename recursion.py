@@ -67,6 +67,25 @@ def guess_num(num):
     return binary_search(num, 1, 1, 100)
 
 
+#############################################
+### Return the index of an item in a list ###
+#############################################
+
+def get_index(item, lst):
+    """Returns the index number of an item in a list"""
+
+    def search_item(item, lst, idx):
+        if idx == len(lst):
+            return None
+
+        if lst[idx] == item:
+            return idx
+
+        return search_item(item, lst, idx+1)
+
+    return search_item(item, lst, 0)
+
+
 ####################
 ### Flatten list ###
 ####################
