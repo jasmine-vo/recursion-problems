@@ -44,6 +44,29 @@ def is_valid(node, mini=None, maxi=None):
     return is_valid(node.left, mini, node.data) and is_valid(node.right, node.data, maxi)
 
 
+###############################################################################
+### Return the number of guesses it takes to find a number from 1-100 using ###
+### binary search and recursion                                             ###
+###############################################################################
+
+def guess_num(num):
+    """Returns the number of guesses it takes to find a number from 1-100 using
+    binary search"""
+
+    assert 0 < num < 101, "Number must be between 1-100"
+
+    def binary_search(num, count, mini, maxi):
+        guess = (maxi - mini)/2 + mini
+            if guess == num:
+                return count
+            if guess > num:
+                return binary_search(num, count+1, mini, guess)
+            if guess < num:
+                return binary_search(num, count+1, guess, maxi)
+    
+    return binary_search(num, 1, 1, 100)
+
+
 ####################
 ### Flatten list ###
 ####################
